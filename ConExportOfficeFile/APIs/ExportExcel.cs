@@ -37,12 +37,7 @@ namespace APIs.ConExportOfficeFile
                     // 如果日期不是第一筆，則新增活頁；如果日期是第一筆，則取第一個活頁
                     int index = date != dates.First() ? excel.Worksheets.Add() : 0;
                     Worksheet sheet = excel.Worksheets[index]; // 取得活頁
-
-                    int year = date.Year - 1911;
-                    int month = date.Month;
-                    string sheetName = $"{year}年{month}月";
-
-                    SetSheet(excel, sheet, fileData, sheetName);
+                    SetSheet(excel, sheet, fileData, date.ToString("yyyy年MM月"));
                 }
                 excel.Save("Files/分頁/ExcelTest.xls");
             }
